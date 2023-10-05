@@ -35,13 +35,13 @@
 
     <div class="form-control">
     <label class="label">
-    <span class="label-text font-bold">E-mail</span></label>
-    <input name="email" type="e-mail"placeholder="E-mail" class="input input-bordered" required/> </div> 
+    <span class="label-text font-bold">email</span></label>
+    <input name="email" type="email"placeholder="email" class="input input-bordered" required/> </div> 
 
     <div class="form-control">
     <label class="label">
-    <span class="label-text font-bold">Bio</span></label>
-    <input name="bio" type="text"placeholder="Bio" class="input input-bordered" required/> </div> 
+    <span class="label-text font-bold">bio</span></label>
+    <input name="bio" type="text"placeholder="bio" class="input input-bordered" /> </div> 
 
     <div class="form-control">
     <label class="label">
