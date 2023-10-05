@@ -17,28 +17,36 @@
    
 @csrf 
 
+<div class="form-control">
+            <label class="label">
+              <span class="label-text font-bold">nome</span>
+            </label>
+            <input name="nome" type="text" placeholder="nome" 
+                    class="input input-bordered" required />
+        </div>
+
     <div class="form-control">
             <label class="label">
               <span class="label-text font-bold">Usuário</span>
             </label>
-            <input name=usuario type="text" placeholder="usuario" 
+            <input name="usuario" type="text" placeholder="usuario" 
                     class="input input-bordered" required />
         </div>
 
     <div class="form-control">
     <label class="label">
     <span class="label-text font-bold">E-mail</span></label>
-    <input name=e-mail type="e-mail"placeholder="E-mail" class="input input-bordered" required/> </div> 
+    <input name="email" type="e-mail"placeholder="E-mail" class="input input-bordered" required/> </div> 
 
     <div class="form-control">
     <label class="label">
     <span class="label-text font-bold">Bio</span></label>
-    <input name=Bio type="text"placeholder="Bio" class="input input-bordered" required/> </div> 
+    <input name="bio" type="text"placeholder="Bio" class="input input-bordered" required/> </div> 
 
     <div class="form-control">
     <label class="label">
     <span class="label-text font-bold">senha</span></label>
-    <input name=senha type="password"placeholder="senha" class="input input-bordered" required/> </div> 
+    <input name="senha" type="password"placeholder="senha" class="input input-bordered" required/> </div> 
     <button class="btn btn-outline btn-success">Success</button>
 </form>
      

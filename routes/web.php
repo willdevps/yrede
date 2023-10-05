@@ -34,15 +34,15 @@ Route::get('/lista-usuarios', function () {
 Route::view('/cadastrousuarios','cadastroUsuarios'); 
 
 Route::post('/salva-usuario', 
-function(Request $REQUEST){
+function(Request $requeste){
 
-    $usaurio = new User(); 
+    $usuario = new User(); 
 
-    $usuario->usuario =$requeste ->input('usuario');
-    $usuario->nome =$requeste ->input('nome');
-    $usuario->bio =$requeste ->input('bio');
-    $usuario->email =$requeste ->input('email');
-    $usuario->senha =$requeste ->input('senha');
+    $usuario->usuario =$requeste->input('usuario');
+    $usuario->nome =$requeste->input('nome');
+    $usuario->bio =$requeste->input('bio');
+    $usuario->email =$requeste->input('email');
+    $usuario->senha =$requeste->input('senha');
     $usuario->save();
     return "Salvo com sucesso!!!";
     
