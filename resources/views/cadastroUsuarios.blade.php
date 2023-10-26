@@ -19,7 +19,7 @@
 
 <div class="form-control">
             <label class="label">
-              <span class="label-text font-bold">nome</span>
+              <span class="label-text font-bold">Nome</span>
             </label>
             <input name="nome" type="text" placeholder="nome" 
                     class="input input-bordered" required />
@@ -35,17 +35,17 @@
 
     <div class="form-control">
     <label class="label">
-    <span class="label-text font-bold">email</span></label>
-    <input name="email" type="email"placeholder="email" class="input input-bordered" required/> </div> 
+    <span class="label-text font-bold">E-mail</span></label>
+    <input name="email" type="email"placeholder="e-mail" class="input input-bordered" required/> </div> 
 
     <div class="form-control">
     <label class="label">
-    <span class="label-text font-bold">bio</span></label>
+    <span class="label-text font-bold">Bio</span></label>
     <input name="bio" type="text"placeholder="bio" class="input input-bordered" /> </div> 
 
     <div class="form-control">
     <label class="label">
-    <span class="label-text font-bold">senha</span></label>
+    <span class="label-text font-bold">Senha</span></label>
     <input name="senha" type="password"placeholder="senha" class="input input-bordered" required/> </div> 
     <button class="btn btn-outline btn-success">Success</button>
 </form>
