@@ -1,8 +1,10 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
+use \App\Models\Post;
 use \App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
  
 // |--------------------------------------------------------------------------
 // | Web Routes
@@ -15,7 +17,10 @@ use Illuminate\Http\Request;
 // */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $posts = Post::all();
+
+    return view('inicial',compact ("posts"));
 });
 
 
@@ -45,7 +50,7 @@ function(Request $requeste){
     $usuario->senha =$requeste->input('senha');
     $usuario->save();
     return "Salvo com sucesso!!!";
-    
+
 })->name('salva-usuario');
 
 Route::view('/Login','Login'); 
@@ -55,15 +60,24 @@ Route::post('/logar',function (Request $request){
         'email' => ['required', 'email'],
         'senha' => ['required'],
     ]);
+  
 
-    if (Auth::attempt($credentials)) {
+    if (Auth::attempt(['email'=>$credentials['email'],'password' =>$credentials['senha']])) {
+
         $request->session()->regenerate();
-
-        return redirect()->intended('dashboard');
+        return redirect()->intended('/');
     }
+   
 return 'Erro ao logar!!! Usuario ou senha invalidos';   
 }); 
 
+Route ::view('/new-post','creatPost');
+Route ::post('/salva-post', function (Request $request){
+    $post = new Post();
+    $post->User_id= Auth::id();
+    $post->mensagem = $request->mensagem;
+    $post->save(); 
 
-   
-   
+    return redirect ("/");
+
+});
