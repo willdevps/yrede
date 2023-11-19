@@ -17,10 +17,8 @@ use Illuminate\Support\Facades\Route;
 // */
 
 Route::get('/', function () {
-
     $posts = Post::all();
-
-    return view('inicial',compact ("posts"));
+    return view('inicial', compact('posts'));
 });
 
 
