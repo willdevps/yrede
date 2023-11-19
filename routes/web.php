@@ -1,6 +1,7 @@
 <?php
-use \App\Models\Post;
-use \App\Models\User;
+
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 // */
 
 Route::get('/', function () {
+
     $posts = Post::all();
+
     return view('inicial', compact('posts'));
 });
 
@@ -32,50 +35,51 @@ Route::get('/lista-usuarios', function () {
     return view('listaUsuarios', compact('usuarios'));
 
 })->name('lista-usuarios');
-
+ 
 
 Route::view('/cadastrousuarios','cadastroUsuarios'); 
 
-Route::post('/salva-usuario', 
-function(Request $requeste){
+Route::post('/salva-usuario', function(Request $request){
 
-    $usuario = new User(); 
-
-    $usuario->usuario =$requeste->input('usuario');
-    $usuario->nome =$requeste->input('nome');
-    $usuario->bio =$requeste->input('bio');
-    $usuario->email =$requeste->input('email');
-    $usuario->senha =$requeste->input('senha');
+    $usuario = new User();
+    $usuario->usuario = $request->input('usuario');
+    $usuario->nome = $request->input('nome');
+    $usuario->bio = $request->input('bio');
+    $usuario->email = $request->input('email');
+    $usuario->senha = $request->input('senha');
     $usuario->save();
+
     return "Salvo com sucesso!!!";
 
 })->name('salva-usuario');
 
-Route::view('/Login','Login'); 
+Route::view('/login','login')->name('login');
 
 Route::post('/logar',function (Request $request){
+   // fazer login
+
     $credentials = $request->validate([
         'email' => ['required', 'email'],
         'senha' => ['required'],
+
     ]);
   
-
-    if (Auth::attempt(['email'=>$credentials['email'],'password' =>$credentials['senha']])) {
-
+    if (Auth::attempt(['email'=>$credentials['email'], 'password' =>$credentials['senha']])){
         $request->session()->regenerate();
+
         return redirect()->intended('/');
+        
     }
-   
-return 'Erro ao logar!!! Usuario ou senha invalidos';   
-}); 
+    return "Erro ao logar!!! Usuário ou senha inválidos";
+});
 
-Route ::view('/new-post','creatPost');
-Route ::post('/salva-post', function (Request $request){
+Route::middleware(['auth'])->group(function () {
+Route ::view('/postagem','creatPost');
+Route::post('/salva-post', function (Request $request) {
     $post = new Post();
-    $post->User_id= Auth::id();
+    $post->user_id= Auth::id();
     $post->mensagem = $request->mensagem;
-    $post->save(); 
-
-    return redirect ("/");
-
+    $post->save();
+    return redirect('/');
+});    
 });
