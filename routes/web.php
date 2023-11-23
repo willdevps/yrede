@@ -21,7 +21,7 @@ Route::get('/', function () {
 
     $posts = Post::all();
 
-    return view('inicial', compact('posts'));
+    return view('inicio', compact('posts'));
 });
 
 
@@ -74,7 +74,7 @@ Route::post('/logar',function (Request $request){
 });
 
 Route::middleware(['auth'])->group(function () {
-Route ::view('/cria-Post','creatPost');
+Route ::view('/post','creat-Post');
 Route::post('/salva-post', function (Request $request) {
     $post = new Post();
     $post->user_id= Auth::id();
