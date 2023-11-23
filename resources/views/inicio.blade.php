@@ -11,32 +11,41 @@
 <body>
 <div>
     
-<div class="hero min-h-screen bg-gray-600">
-  <div class="hero-content flex-col lg:flex-row">
-    <img src="https://img.freepik.com/fotos-premium/um-por-do-sol-rosa-com-palmeiras-no-horizonte_654523-31.jpg" class="max-w-sm rounded-lg shadow-2xl" />
-    <div>
-    
-    <h1 class="text-5xl font-bold">Seja bem vindo!</h1>
-      <p class="py-6"></p>
-      <a class="btn" href="/cadastraUsuarios">Criar Conta</a>
+<div class="bg-black-500 ">
+  <div class="p-10 flex justify-around">
+    <img src="https://img.freepik.com/fotos-premium/um-por-do-sol-rosa-com-palmeiras-no-horizonte_654523-31.jpg" 
+    class="max-w-sm rounded-lg shadow-2xl" />
+  <h7 class="text-5xl font-bold flex items-center"> Seja bem vindo! </h7> <div>
+      
+   
+      <a class="btn" href="/cadastrausuarios">Criar Conta</a>
       <a class="btn" href="/login">Login</a>
-      <a class="btn" href="/post">Nova Postagem</a>
-    </div>
+      <a class="btn" href="/post">Nova Postagem</a> </div>
   </div>
 </div>
 
-<h1>Posts</h1>
-
+<p class="p-6 shadow-2xl border-b border-b-teal-300 text-center font-serif  ">seus posts aqui</p>
+<div class="p-3 grid grid-cols-4 gap-4">
 @foreach ($posts as $post)
 
-<div>
-    Postagem - {{$post->id}}
-</div>
-<div>
-{{$post->mensagem}}
-</div>
-<hr>
+ <div class="flex gap-4 w-52 ">
+  <div class="flex gap-4 items-center">
+    <div class="skeleton w-16 h-16 rounded-full shrink-0"></div>
+    <div class="flex flex-col gap-4">
+      <div class="skeleton h-4 w-20"></div>
+      Postagem - {{$post->id}}
+      <div>
+        {{$post->mensagem}}
+      </div>
 
+      <div class="skeleton h-4 w-28"></div>
+    </div>
+  </div>
+  <div class="skeleton h-32 w-full"></div>
+</div>
+
+    
 @endforeach
+</div>
 </body>
 </html>

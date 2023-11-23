@@ -37,7 +37,7 @@ Route::get('/lista-usuarios', function () {
 })->name('lista-usuarios');
  
 
-Route::view('/cadastrousuarios','cadastroUsuarios'); 
+Route::view('/cadastrausuarios','cadastroUsuarios'); 
 
 Route::post('/salva-usuario', function(Request $request){
 
