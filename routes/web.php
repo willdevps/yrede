@@ -74,12 +74,12 @@ Route::post('/logar',function (Request $request){
 });
 
 Route::middleware(['auth'])->group(function () {
-Route ::view('/postagem','creatPost');
+Route ::view('/cria-Post','creatPost');
 Route::post('/salva-post', function (Request $request) {
     $post = new Post();
     $post->user_id= Auth::id();
     $post->mensagem = $request->mensagem;
     $post->save();
     return redirect('/');
-});    
+});   
 });
